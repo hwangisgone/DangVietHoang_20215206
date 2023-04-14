@@ -1,0 +1,7 @@
+DANG VIET HOANG 20215206
+
+6.1.
+	- If the users chose "Cancel", the dialog defaults to "No"
+	- Customization can be done with the seventh argument of JOptionPane.showOptionDialog
+
+6.2.

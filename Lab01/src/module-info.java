@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Legion
+ *
+ */
+module HelloWorld {
+}
