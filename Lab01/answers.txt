@@ -1,7 +1,15 @@
 DANG VIET HOANG 20215206
 
 6.1.
-	- If the users chose "Cancel", the dialog defaults to "No"
-	- Customization can be done with the seventh argument of JOptionPane.showOptionDialog
+- What happens if users choose "Cancel"?
+	A:	If the users chose "Cancel", the dialog defaults to "No".
+
+- How to customize the options to users, e.g. only two options: "Yes" and "No", OR "I do" and "I dont'"?
+	A: 
+		Only two "Yes" and "No" option can be achieved with JOptionPane.YES_NO_OPTION as the 4th argument of JOptionPane.showConfirmDialog 
+
+		Button Customization ("I do" & "I don't") can be done with the seventh argument of JOptionPane.showOptionDialog
+
+		Demonstration is in the code of ChoosingOption.java
 
 6.2.

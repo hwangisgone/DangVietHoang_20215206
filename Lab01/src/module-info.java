@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author Legion
- *
- */
-module HelloWorld {
-}
