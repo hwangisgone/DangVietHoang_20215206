@@ -1,9 +1,7 @@
-package hello;
-
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-public class Ex225_Calculate {
+public class ShowTwoNumbers {
 
 	public static void main(String[] args) {
 		// System.out.println("Hello me");
