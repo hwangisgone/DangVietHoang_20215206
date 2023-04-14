@@ -30,6 +30,7 @@ public class SortSumArray {
         System.out.println("Sum = " + sum);
         System.out.printf("Average = %.3f", (double)sum/(double)n);
         
+        keyboard.close();
 	}
 
 }
