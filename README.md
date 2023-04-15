@@ -1,5 +1,5 @@
 # DangVietHoang_20215206
-OOP Lab
+OOP Lab Exercises for Class 727651 \[2022_2\]
 
 ## Lab01
 [2.2.5](Lab01/CalcTwoNumbers.java) - CalcTwoNumbers.java \
