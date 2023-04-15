@@ -1,4 +1,4 @@
-# DangVietHoang_20215206
+# Dang Viet Hoang - 20215206
 OOP Lab Exercises for Class 727651 \[2022_2\]
 
 ## Lab01
