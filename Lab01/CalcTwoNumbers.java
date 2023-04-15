@@ -1,7 +1,7 @@
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-public class ShowTwoNumbers {
+public class CalcTwoNumbers {
 
 	public static void main(String[] args) {
 		// System.out.println("Hello me");

@@ -61,18 +61,18 @@ public class SolveEquations {
 		JScrollPane scrollPane = new JScrollPane(panel);
 		scrollPane.setPreferredSize(new Dimension(400, 200)); // set preferred size for the scroll pane
 
-		int a11, a12, a21, a22, b1, b2;
+		double a11, a12, a21, a22, b1, b2;
 		int result;
 
 		while (true) {
 			result = JOptionPane.showConfirmDialog(null, scrollPane, "Linear system with 2 variables", JOptionPane.OK_CANCEL_OPTION);
 			if (result == JOptionPane.OK_OPTION) {
-				a11 = Integer.parseInt(textFields[0].getText());
-				a12 = Integer.parseInt(textFields[1].getText());
-				b1 = Integer.parseInt(textFields[2].getText());
-				a21 = Integer.parseInt(textFields[3].getText());
-				a22 = Integer.parseInt(textFields[4].getText());
-				b2 = Integer.parseInt(textFields[5].getText());
+				a11 = Double.parseDouble(textFields[0].getText());
+				a12 = Double.parseDouble(textFields[1].getText());
+				b1 = Double.parseDouble(textFields[2].getText());
+				a21 = Double.parseDouble(textFields[3].getText());
+				a22 = Double.parseDouble(textFields[4].getText());
+				b2 = Double.parseDouble(textFields[5].getText());
 				
 				strEqn = String.format("<html>%s%s %s%s = %s"
 									 + "<br/>%s%s %s%s = %s</html>", 

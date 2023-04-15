@@ -4,7 +4,7 @@ public class PrintNStarClass {
 	public static void main(String args[]) {
 		Scanner keyboard = new Scanner(System.in);
 		
-		System.out.println("Input height of n stars = ");
+		System.out.print("Input height of n stars = ");
 		int n = keyboard.nextInt();
 		
 		for (int i = n; i > 0; i--) {
