@@ -17,9 +17,10 @@ public class Aims {
 		System.out.println("Total Cost: " + anOrder.totalCost());
 		
 		anOrder.removeDigitalVideoDisc(dvd2);
-		System.out.println("Total Cost after removing Star Wars 24.95: " + anOrder.totalCost());
+		System.out.println("Total Cost after removing Star Wars 24.95: " + anOrder.totalCost() +"\n\n");
 		
 		
+		System.out.println("More testings:");
 		DigitalVideoDisc dvd4 = new DigitalVideoDisc("Avatar", "Science Fiction", "James Cameron", 192, 12.44f);
 		DigitalVideoDisc dvd5 = new DigitalVideoDisc("Avatar: Way of the Water", "Science Fiction", "James Cameron", 27.98f);
 		DigitalVideoDisc dvd6 = new DigitalVideoDisc("Top Gun: Maverick", "Action", 22.25f);
