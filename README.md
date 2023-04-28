@@ -12,3 +12,8 @@ OOP Lab Exercises for Class 727651 \[2022_2\]
 [6.5](Lab01/65_Array/src/SortSumArray.java) - 65_Array/src/SortSumArray.java \
 [6.6](Lab01/66_Matrix/src/AddMatrix.java) - 66_Matrix/src/AddMatrix.java
 
+
+## Lab02
+[AIMS](Lab02/AimsProject/src/aims/Aims.java) - Aims.java \
+
+
