@@ -9,21 +9,27 @@ public class Cart {
 	
 	//private int qtyOrdered = 0;
 	
-	public void addDigitalVideoDisc (DigitalVideoDisc disc) {
+	public String addDigitalVideoDisc (DigitalVideoDisc disc) {
+		String warning = "";
 		if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
 			itemsOrdered.add(disc);
 			System.out.printf("Disc added to cart. (%d)\n", itemsOrdered.size());
 		} else {
-			System.out.println("The cart is full. Cannot add.");
+			warning = "The cart is full. Cannot add.";
+			System.out.println(warning);
 		}
+		return warning;
 	}
 	
-	public void removeDigitalVideoDisc (DigitalVideoDisc disc) {
+	public String removeDigitalVideoDisc (DigitalVideoDisc disc) {
+		String warning = "";
 		if (itemsOrdered.remove(disc)) {
 			System.out.println("Disc removed.");
 		} else {
-			System.out.println("Disc doesn't exist.");
+			warning = "Disc doesn't exist.";
+			System.out.println(warning);
 		}
+		return warning;
 
 	}
 	

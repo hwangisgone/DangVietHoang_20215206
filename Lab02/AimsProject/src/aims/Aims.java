@@ -6,7 +6,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Aims {
-
+	private static final int MODE_ADD = 1;
+	private static final int MODE_REMOVE = 2;
+	private static int appmode = MODE_ADD;
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Cart anOrder = new Cart();
@@ -22,7 +25,7 @@ public class Aims {
 		System.out.println("Total Cost: " + anOrder.totalCost());
 		
 		anOrder.removeDigitalVideoDisc(dvd2);
-		System.out.println("Total Cost after removing Star Wars 24.95: " + anOrder.totalCost() +"\n\n");
+		System.out.println("Total Cost after removing Star Wars 24.95: " + anOrder.totalCost() +"\n");
 		
 		System.out.println("More testings:");
 		DigitalVideoDisc dvd4 = new DigitalVideoDisc("Avatar", "Science Fiction", "James Cameron", 192, 12.44f);
@@ -43,25 +46,6 @@ public class Aims {
 		DigitalVideoDisc dvd19 = new DigitalVideoDisc("Joker", "Thriller", 122, 30f);
 		DigitalVideoDisc dvd20 = new DigitalVideoDisc("Toy Story 4", "Animation", 100, 17.01f);
 
-		anOrder.addDigitalVideoDisc(dvd3);
-		anOrder.addDigitalVideoDisc(dvd4);
-		anOrder.addDigitalVideoDisc(dvd5);
-		anOrder.addDigitalVideoDisc(dvd6);
-		anOrder.addDigitalVideoDisc(dvd7);
-		anOrder.addDigitalVideoDisc(dvd8);
-		anOrder.addDigitalVideoDisc(dvd9);
-		anOrder.addDigitalVideoDisc(dvd10);
-		anOrder.addDigitalVideoDisc(dvd11);
-		anOrder.addDigitalVideoDisc(dvd12);
-		anOrder.addDigitalVideoDisc(dvd13);
-		anOrder.addDigitalVideoDisc(dvd14);
-		anOrder.addDigitalVideoDisc(dvd15);
-		anOrder.addDigitalVideoDisc(dvd16);
-		anOrder.addDigitalVideoDisc(dvd17);
-		anOrder.addDigitalVideoDisc(dvd18);
-		anOrder.addDigitalVideoDisc(dvd19);
-		anOrder.addDigitalVideoDisc(dvd20);
-
 		DigitalVideoDisc dvdlist[] = {
 				dvd1, dvd2, dvd3, dvd4, dvd5, 
 				dvd6, dvd7, dvd8, dvd9, dvd10, 
@@ -74,40 +58,74 @@ public class Aims {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.insets = new Insets(0, 5, 5, 0); // add 5 pixels of padding
 
-		gbc.gridwidth = 2;
+		gbc.gridwidth = 1;
 		gbc.gridheight = 4;
-		gbc.gridy = 0;
+		gbc.gridy = 1;
 		gbc.gridx = 0;
 		gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        JTextArea text = new JTextArea(anOrder.getContentAllDVD());
-        text.setEditable(false);
-		JScrollPane scrollPane = new JScrollPane(text);
-		// scrollPane.setPreferredSize(new Dimension(50, 100));
-        panel.add(scrollPane,gbc);
+        JTextArea dvdtext = new JTextArea(anOrder.getContentAllDVD());
+        dvdtext.setEditable(false);
+		JScrollPane scrollPane = new JScrollPane(dvdtext);
+		scrollPane.setPreferredSize(new Dimension(80, 100));
+        panel.add(scrollPane, gbc);
 		
+
+		gbc.gridx = 0;
+        gbc.gridy = 0;
 		gbc.gridwidth = 1;
 		gbc.gridheight = 1;
 		gbc.fill = GridBagConstraints.BOTH;
+		
+		// Smaller panel
+		JPanel labelpanel = new JPanel(new GridLayout(4, 1));
+		JRadioButton radioButton1 = new JRadioButton("Add DVD"); radioButton1.setSelected(true);
+		JRadioButton radioButton2 = new JRadioButton("Remove DVD");
+		JLabel cartLabel = new JLabel("Cart");
+		JLabel costLabel = new JLabel();
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(radioButton1);
+		group.add(radioButton2);
+		radioButton1.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { appmode = MODE_ADD; } });
+		radioButton2.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { appmode = MODE_REMOVE; } });
+		
+		labelpanel.add(radioButton1);
+		labelpanel.add(radioButton2);
+		labelpanel.add(cartLabel);
+		labelpanel.add(costLabel);
+
+		panel.add(labelpanel, gbc);
+
+		
         for (int i = 0; i < dvdlist.length; i++) {
         	DigitalVideoDisc d = dvdlist[i];
 			gbc.gridy = i / 4;
 			gbc.gridx = 2 + i % 4;
         	
-            JButton button = new JButton(d.getTitle() + "\n($" + d.getCost() + ")");
+            JButton button = new JButton("<html>" + d.getTitle() + "<br/>($" + d.getCost() + ")</html>");
+            button.setPreferredSize(new Dimension(50, 50));
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                	anOrder.addDigitalVideoDisc(d);
+                	String warning = "";
+                	if (appmode == MODE_ADD) {
+                    	warning = anOrder.addDigitalVideoDisc(d);		
+                	} else if (appmode == MODE_REMOVE) {
+                		warning = anOrder.removeDigitalVideoDisc(d);
+                	}
+            		dvdtext.setText(anOrder.getContentAllDVD());
+            		cartLabel.setText("Cart      " + warning);
+            		costLabel.setText("Total: $" + anOrder.totalCost());
                 }
             });
             panel.add(button, gbc);
         }
         
-		// JScrollPane bigScrollPane = new JScrollPane(panel);
-		//bigScrollPane.setPreferredSize(new Dimension(400, 200));
+		JScrollPane bigScrollPane = new JScrollPane(panel);
+		bigScrollPane.setPreferredSize(new Dimension(600, 400));
 		
-        frame.getContentPane().add(panel);
+        frame.getContentPane().add(bigScrollPane);
         frame.pack();
         frame.setVisible(true);
 	}
