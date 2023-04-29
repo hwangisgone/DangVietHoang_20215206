@@ -1,0 +1,5 @@
+The presence of getter and setter methods in Java code can damage the maintainability of code and is not particularly object-oriented, making your program looks like it's not well designed. Sometimes, procedural programmers (C/C++) make this kind of mistake when adopting Java.
+
+Getter and setter methods expose implementation details, allowing other parts of the program to be dependent on the type of the data being accessed. This leads to problems when changing the implementation of a class. Changing the type of data being returned by a getter method will cause errors in all the places where that method is used, and each of those place would need to be manually fixed. 
+
+This undermines the fundamental principle of object-oriented programming and defeat the whole purpose of abstraction: objects should hide their implementation details. Some solutions to this include: having a method that returns an object in terms of an interface, or having clearly defiend dynamic model (only passing data if must needed)
