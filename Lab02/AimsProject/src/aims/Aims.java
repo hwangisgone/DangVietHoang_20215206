@@ -95,7 +95,7 @@ public class Aims {
 		labelpanel.add(radioButton2);
 		labelpanel.add(cartLabel);
 		labelpanel.add(costLabel);
-
+		labelpanel.setPreferredSize(new Dimension(50, 50));
 		panel.add(labelpanel, gbc);
 
 		
@@ -116,14 +116,14 @@ public class Aims {
                 	}
             		dvdtext.setText(anOrder.getContentAllDVD());
             		cartLabel.setText("Cart      " + warning);
-            		costLabel.setText("Total: $" + anOrder.totalCost());
+            		costLabel.setText("Total: $" + String.format("%.2f", anOrder.totalCost()) );
                 }
             });
             panel.add(button, gbc);
         }
         
 		JScrollPane bigScrollPane = new JScrollPane(panel);
-		bigScrollPane.setPreferredSize(new Dimension(600, 400));
+		bigScrollPane.setPreferredSize(new Dimension(700, 400));
 		
         frame.getContentPane().add(bigScrollPane);
         frame.pack();
