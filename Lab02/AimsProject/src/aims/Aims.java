@@ -1,5 +1,10 @@
 package aims;
 
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
 public class Aims {
 
 	public static void main(String[] args) {
@@ -18,7 +23,6 @@ public class Aims {
 		
 		anOrder.removeDigitalVideoDisc(dvd2);
 		System.out.println("Total Cost after removing Star Wars 24.95: " + anOrder.totalCost() +"\n\n");
-		
 		
 		System.out.println("More testings:");
 		DigitalVideoDisc dvd4 = new DigitalVideoDisc("Avatar", "Science Fiction", "James Cameron", 192, 12.44f);
@@ -58,9 +62,54 @@ public class Aims {
 		anOrder.addDigitalVideoDisc(dvd19);
 		anOrder.addDigitalVideoDisc(dvd20);
 
-		DigitalVideoDisc dvd21 = new DigitalVideoDisc("Colette", "Animation", 45.03f);	
-		anOrder.addDigitalVideoDisc(dvd21);
-		System.out.println("Total Cost: " + anOrder.totalCost());
+		DigitalVideoDisc dvdlist[] = {
+				dvd1, dvd2, dvd3, dvd4, dvd5, 
+				dvd6, dvd7, dvd8, dvd9, dvd10, 
+				dvd11, dvd12, dvd13, dvd14, dvd15, 
+				dvd16, dvd17, dvd18, dvd19, dvd20
+		};
+		
+		JFrame frame = new JFrame("DVD Store");
+		JPanel panel = new JPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(0, 5, 5, 0); // add 5 pixels of padding
+
+		gbc.gridwidth = 2;
+		gbc.gridheight = 4;
+		gbc.gridy = 0;
+		gbc.gridx = 0;
+		gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        JTextArea text = new JTextArea(anOrder.getContentAllDVD());
+        text.setEditable(false);
+		JScrollPane scrollPane = new JScrollPane(text);
+		// scrollPane.setPreferredSize(new Dimension(50, 100));
+        panel.add(scrollPane,gbc);
+		
+		gbc.gridwidth = 1;
+		gbc.gridheight = 1;
+		gbc.fill = GridBagConstraints.BOTH;
+        for (int i = 0; i < dvdlist.length; i++) {
+        	DigitalVideoDisc d = dvdlist[i];
+			gbc.gridy = i / 4;
+			gbc.gridx = 2 + i % 4;
+        	
+            JButton button = new JButton(d.getTitle() + "\n($" + d.getCost() + ")");
+            button.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                	anOrder.addDigitalVideoDisc(d);
+                }
+            });
+            panel.add(button, gbc);
+        }
+        
+		// JScrollPane bigScrollPane = new JScrollPane(panel);
+		//bigScrollPane.setPreferredSize(new Dimension(400, 200));
+		
+        frame.getContentPane().add(panel);
+        frame.pack();
+        frame.setVisible(true);
 	}
 
 }

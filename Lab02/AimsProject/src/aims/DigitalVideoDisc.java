@@ -23,6 +23,11 @@ public class DigitalVideoDisc {
 		return cost;
 	}
 	
+	public String getContents() {
+		String buffer = title + "<br/>" + category + "<br/>" + director + "<br/>" + length + "<br/>" + cost + "<br/>";
+		return buffer;
+	}
+	
 	// By title
 	public DigitalVideoDisc(String title) {
 		super();

@@ -5,13 +5,14 @@ import java.util.List;
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private List<DigitalVideoDisc> itemsOrdered = new ArrayList<DigitalVideoDisc>();
-	private int qtyOrdered = 0;
+	private int totalQtyOrdered = 0;
+	
+	//private int qtyOrdered = 0;
 	
 	public void addDigitalVideoDisc (DigitalVideoDisc disc) {
-		if (qtyOrdered < MAX_NUMBERS_ORDERED) {
+		if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
 			itemsOrdered.add(disc);
-			qtyOrdered += 1;
-			System.out.printf("Disc added to cart. (%d)\n", qtyOrdered);
+			System.out.printf("Disc added to cart. (%d)\n", itemsOrdered.size());
 		} else {
 			System.out.println("The cart is full. Cannot add.");
 		}
@@ -19,12 +20,20 @@ public class Cart {
 	
 	public void removeDigitalVideoDisc (DigitalVideoDisc disc) {
 		if (itemsOrdered.remove(disc)) {
-			qtyOrdered -= 1;
 			System.out.println("Disc removed.");
 		} else {
 			System.out.println("Disc doesn't exist.");
 		}
 
+	}
+	
+	public String getContentAllDVD() {
+		String buffer = "";
+        for (int i = 0; i < itemsOrdered.size(); i++) {
+            buffer += itemsOrdered.get(i).getTitle() + "\n";
+        }
+        
+        return buffer;
 	}
 	
 	public  float totalCost() {
