@@ -42,7 +42,7 @@ public class Cart {
         return buffer;
 	}
 	
-	public  float totalCost() {
+	public float totalCost() {
 		float total = 0;
 		for (int i = 0; i < itemsOrdered.size(); i++) 
 		{
@@ -50,5 +50,23 @@ public class Cart {
 		}
 		
 		return total;
+	}
+	
+	public void print() {
+		System.out.println("***********************CART***********************");
+		System.out.println("Ordered Items:");
+		
+		DigitalVideoDisc dvd;
+        for (int i = 0; i < this.itemsOrdered.size(); i++) {
+        	dvd = this.itemsOrdered.get(i);
+        	System.out.printf("%d. %s\n", i+1, dvd.toString());
+        }
+
+		System.out.println("Total cost: " + this.totalCost() + "$");
+		System.out.println("***************************************************");
+	}
+	
+	public void searchByID(int id) {
+		
 	}
 }

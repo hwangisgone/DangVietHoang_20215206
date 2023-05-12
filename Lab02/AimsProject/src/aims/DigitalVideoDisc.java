@@ -28,6 +28,16 @@ public class DigitalVideoDisc {
 		return buffer;
 	}
 	
+	public String toString() {
+		return String.format("DVD - %s - %s - %s - %s: %s $", 
+			this.title, 
+			this.category, 
+			this.director,
+			this.length,
+			this.cost
+		);
+	}
+	
 	// By title
 	public DigitalVideoDisc(String title) {
 		super();
