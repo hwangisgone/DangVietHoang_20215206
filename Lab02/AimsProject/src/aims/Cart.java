@@ -21,7 +21,7 @@ public class Cart {
 		return warning;
 	}
 	
-	// Array 
+	// METHOD OVERLOADING: Array 
 	/*
 	public String addDigitalVideoDisc (DigitalVideoDisc [] dvdList) {
 		String warning = "";
@@ -33,7 +33,7 @@ public class Cart {
 	} 
 	*/
 	
-	// Java varargs
+	// METHOD OVERLOADING: Java varargs
 	public String addDigitalVideoDisc (DigitalVideoDisc ... dvdList) {
 		String warning = "";
 		for (int i = 0; i < dvdList.length; i++) {
@@ -43,7 +43,7 @@ public class Cart {
 		return warning;
 	}
 	
-	// 2.2
+	// METHOD OVERLOADING: 2.2
 	public String addDigitalVideoDisc (DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
 		String warning = "";
 
