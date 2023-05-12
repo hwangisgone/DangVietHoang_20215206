@@ -3,6 +3,7 @@ OOP Lab Exercises for Class 727651 \[2022_2\]
 
 ## Lab01 (Linked to OtherProjects)
 Links are working (12/05/2023)
+
 [2.2.5](OtherProjects/src/hust/soict/globalict/lab01/CalcTwoNumbers.java) - CalcTwoNumbers.java \
 [2.2.6](OtherProjects/src/hust/soict/globalict/lab01/SolveEquations.java) - SolveEquations.java
 
@@ -15,8 +16,7 @@ Links are working (12/05/2023)
 
 
 ## Answers.txt to Labs
-[Lab02](AimsProject/answers_Lab02.txt): Problem Modeling and Encapsulation
-
-[Lab03](AimsProject/answers_Lab03.txt): Basic Object-Oriented Techniques & Release Workflow
+\[[Lab02](AimsProject/answers_Lab02.txt)\]: Problem Modeling and Encapsulation
+\[[Lab03](AimsProject/answers_Lab03.txt)\]: Basic Object-Oriented Techniques & Release Workflow
 
 Note Lab03: Branch `feature/search-cart` wasn't created because the search was already implemented in `feature/print-cart`.
