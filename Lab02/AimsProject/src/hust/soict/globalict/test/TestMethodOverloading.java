@@ -1,6 +1,9 @@
-package aims;
+package hust.soict.globalict.test;
 
-public class Testing {
+import hust.soict.globalict.aims.disc.*;
+import hust.soict.globalict.aims.cart.*;
+
+public class TestMethodOverloading {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
