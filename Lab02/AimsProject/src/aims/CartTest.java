@@ -15,6 +15,16 @@ public class CartTest {
 		cart.addDigitalVideoDisc(dvd3);
 		
 		cart.print();
+		
+		System.out.println("\nTEST SEARCH:\n");
+		cart.searchByID(1);
+		cart.searchByID(15);
+		
+		System.out.println();
+		cart.searchByTitle("liOn");
+		cart.searchByTitle("star lion");
+		cart.searchByTitle("why");
+		cart.searchByTitle("JoJo's Bizarre Adventure: Stardust Crusaders");
 	}
 
 }
