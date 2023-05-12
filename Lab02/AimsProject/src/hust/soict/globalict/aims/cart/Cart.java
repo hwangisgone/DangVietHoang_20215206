@@ -1,17 +1,19 @@
-package aims;
+package hust.soict.globalict.aims.cart;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import hust.soict.globalict.aims.disc.DigitalVideoDisc;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private List<DigitalVideoDisc> itemsOrdered = new ArrayList<DigitalVideoDisc>();
-	private int totalQtyOrdered = 0;
 	
 	//private int qtyOrdered = 0;
 	
 	public String addDigitalVideoDisc (DigitalVideoDisc disc) {
 		String warning = "";
-		if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
+		if (this.itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
 			itemsOrdered.add(disc);
 			System.out.printf("Disc added to cart. (%d)\n", itemsOrdered.size());
 		} else {

@@ -1,9 +1,12 @@
-package aims;
+package hust.soict.globalict.aims;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
+
+import hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import hust.soict.globalict.aims.cart.Cart;
+// import hust.soict.globalict.aims.store.*;
 
 public class Aims {
 	private static final int MODE_ADD = 1;
