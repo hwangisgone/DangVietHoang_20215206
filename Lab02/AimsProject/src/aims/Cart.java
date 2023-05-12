@@ -21,6 +21,38 @@ public class Cart {
 		return warning;
 	}
 	
+	// Array 
+	/*
+	public String addDigitalVideoDisc (DigitalVideoDisc [] dvdList) {
+		String warning = "";
+		for (int i = 0; i < dvdList.length; i++) {
+			warning += addDigitalVideoDisc(dvdList[i]);
+		}
+
+		return warning;
+	} 
+	*/
+	
+	// Java varargs
+	public String addDigitalVideoDisc (DigitalVideoDisc ... dvdList) {
+		String warning = "";
+		for (int i = 0; i < dvdList.length; i++) {
+			warning += addDigitalVideoDisc(dvdList[i]);
+		}
+
+		return warning;
+	}
+	
+	// 2.2
+	public String addDigitalVideoDisc (DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+		String warning = "";
+
+		warning += addDigitalVideoDisc(dvd1);
+		warning += addDigitalVideoDisc(dvd2);
+
+		return warning;
+	}
+	
 	public String removeDigitalVideoDisc (DigitalVideoDisc disc) {
 		String warning = "";
 		if (itemsOrdered.remove(disc)) {
