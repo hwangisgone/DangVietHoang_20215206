@@ -31,6 +31,18 @@ public class DigitalVideoDisc {
 		nbDigitalVideoDiscs += 1;
 	}
 	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public void setAll(String title, String category, String director, int length, float cost) {
+		this.title = title;
+		this.category = category;
+		this.director = director;
+		this.length = length;
+		this.cost = cost;
+	}
+	
 	public String getContents() {
 		String buffer = title + "<br/>" + category + "<br/>" + director + "<br/>" + length + "<br/>" + cost + "<br/>";
 		return buffer;
