@@ -26,6 +26,13 @@ public class DigitalVideoDisc {
 		return cost;
 	}
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public void setId() {
 		this.id = nbDigitalVideoDiscs;
 		nbDigitalVideoDiscs += 1;
@@ -46,6 +53,31 @@ public class DigitalVideoDisc {
 	public String getContents() {
 		String buffer = title + "<br/>" + category + "<br/>" + director + "<br/>" + length + "<br/>" + cost + "<br/>";
 		return buffer;
+	}
+	
+	public String toString() {
+		return String.format("DVD - %s - %s - %s - %s: %s $", 
+			this.title, 
+			this.category, 
+			this.director,
+			this.length,
+			this.cost
+		);
+	}
+	
+	public boolean isMatch(String keywords) {
+		// Split the keywords into an array of individual words
+		String[] words = keywords.toLowerCase().split("\\s+");
+		
+		// Check if any word in the array matches the DVD's title (case-insensitive)
+		for (String word : words) {
+			if (this.title.toLowerCase().contains(word)) {
+				return true;
+			}
+		}
+		   
+		// No match found
+		return false;
 	}
 	
 	// By title
