@@ -18,5 +18,6 @@ Links are working (12/05/2023)
 ## Answers.txt to Labs
 \[[Lab02](AimsProject/answers_Lab02.txt)\]: Problem Modeling and Encapsulation \
 \[[Lab03](AimsProject/answers_Lab03.txt)\]: Basic Object-Oriented Techniques & Release Workflow
+Branch: **[release/lab03](https://github.com/hwangisgone/DangVietHoang_20215206/tree/release/lab03)**
 
 Note Lab03: Branch `feature/search-cart` wasn't created because the search was already implemented in `feature/print-cart`.
