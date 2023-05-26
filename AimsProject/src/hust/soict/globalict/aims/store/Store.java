@@ -3,22 +3,22 @@ package hust.soict.globalict.aims.store;
 import java.util.ArrayList;
 import java.util.List;
 
-import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Media;
 
 public class Store {
-	private List<DigitalVideoDisc> itemsInStore = new ArrayList<DigitalVideoDisc>();
+	private List<Media> itemsInStore = new ArrayList<Media>();
 	
-	public void addDVD(DigitalVideoDisc dvd) {
-		this.itemsInStore.add(dvd);
-		System.out.println("Disc added.");
+	public void addMedia(Media medium) {
+		this.itemsInStore.add(medium);
+		System.out.println("Item added.");
 	}
 	
-	public String removeDVD(DigitalVideoDisc dvd) {
+	public String removeMedia(Media medium) {
 		String warning = "";
-		if (this.itemsInStore.remove(dvd)) {
-			System.out.println("Disc removed.");
+		if (this.itemsInStore.remove(medium)) {
+			System.out.println("Item removed.");
 		} else {
-			warning = "Disc doesn't exist.";
+			warning = "Item doesn't exist.";
 			System.out.println(warning);
 		}
 		return warning;
