@@ -22,13 +22,11 @@ public abstract class Media {
         this.title = title;
 	}
 	public Media(String title, String category) {
-		// TODO Auto-generated constructor stub
 		this.setId();
         this.title = title;
         this.category = category;
 	}
 	public Media(String title, String category, float cost) {
-		// TODO Auto-generated constructor stub
 		this.setId();
         this.title = title;
         this.category = category;

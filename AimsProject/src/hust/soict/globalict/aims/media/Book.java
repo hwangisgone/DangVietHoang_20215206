@@ -5,11 +5,8 @@ import java.util.List;
 
 public class Book extends Media {
 	private List<String> authors = new ArrayList<String>();
-	
-	public Book() {
-		// TODO Auto-generated constructor stub
-	}
 
+	
 	public void addAuthor(String authorName) {
 		if (this.authors.contains(authorName)) {
 			System.out.println("Author already added.");
@@ -26,7 +23,19 @@ public class Book extends Media {
 			System.out.println("Removed " + authorName);
 		}	
 	}
-	
-	
 
+	public Book(String title, String category, float cost) {
+		super(title, category, cost);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Book(String title, String category) {
+		super(title, category);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Book(String title) {
+		super(title);
+		// TODO Auto-generated constructor stub
+	}
 }

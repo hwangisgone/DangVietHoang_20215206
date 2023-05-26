@@ -34,7 +34,7 @@ public class TestPassingParameter {
 		int length = dvd1.getLength();
 		float cost = dvd1.getCost();
 		
-		dvd1.setAll(
+		dvd1 = new DigitalVideoDisc(
 			dvd2.getTitle(), 
 			dvd2.getCategory(), 
 			dvd2.getDirector(),
@@ -42,7 +42,7 @@ public class TestPassingParameter {
 			dvd2.getCost()
 		);
 		
-		dvd2.setAll(title, category, director, length, cost);
+		dvd2 = new DigitalVideoDisc(title, category, director, length, cost);
 	}
 
 	public static void changeTitle(DigitalVideoDisc dvd, String title) {
