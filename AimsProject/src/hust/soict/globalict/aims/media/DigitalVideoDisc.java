@@ -17,23 +17,6 @@ public class DigitalVideoDisc extends Disc{
 		);
 	}
 	
-	public boolean isMatch(String keywords) {
-		// Split the keywords into an array of individual words
-		String[] words = keywords.toLowerCase().split("\\s+");
-		
-		// Check if any word in the array matches the DVD's title (case-insensitive)
-		for (String word : words) {
-			if (this.getTitle().toLowerCase().contains(word)) {
-				return true;
-			}
-		}
-		   
-		// No match found
-		return false;
-	}
-
-	
-	
 	public DigitalVideoDisc(String title, String category, float cost) {
 		super(title, category, cost);
 		// TODO Auto-generated constructor stub

@@ -3,18 +3,16 @@ package hust.soict.globalict.aims.cart;
 import java.util.ArrayList;
 import java.util.List;
 
-import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Media;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private List<DigitalVideoDisc> itemsOrdered = new ArrayList<DigitalVideoDisc>();
+	private List<Media> itemsOrdered = new ArrayList<Media>();
 	
-	//private int qtyOrdered = 0;
-	
-	public String addDigitalVideoDisc (DigitalVideoDisc disc) {
+	public String addMedia (Media medium) {
 		String warning = "";
 		if (this.itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
-			itemsOrdered.add(disc);
+			itemsOrdered.add(medium);
 			System.out.printf("Disc added to cart. (%d)\n", itemsOrdered.size());
 		} else {
 			warning = "The cart is full. Cannot add.";
@@ -23,51 +21,29 @@ public class Cart {
 		return warning;
 	}
 	
-	// METHOD OVERLOADING: Array 
-	/*
-	public String addDigitalVideoDisc (DigitalVideoDisc [] dvdList) {
-		String warning = "";
-		for (int i = 0; i < dvdList.length; i++) {
-			warning += addDigitalVideoDisc(dvdList[i]);
-		}
-
-		return warning;
-	} 
-	*/
-	
 	// METHOD OVERLOADING: Java varargs
-	public String addDigitalVideoDisc (DigitalVideoDisc ... dvdList) {
+	public String addMedia (Media ... mediumList) {
 		String warning = "";
-		for (int i = 0; i < dvdList.length; i++) {
-			warning += addDigitalVideoDisc(dvdList[i]);
+		for (int i = 0; i < mediumList.length; i++) {
+			warning += addMedia(mediumList[i]);
 		}
 
 		return warning;
 	}
 	
-	// METHOD OVERLOADING: 2.2
-	public String addDigitalVideoDisc (DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+	public String removeMedia (Media medium) {
 		String warning = "";
-
-		warning += addDigitalVideoDisc(dvd1);
-		warning += addDigitalVideoDisc(dvd2);
-
-		return warning;
-	}
-	
-	public String removeDigitalVideoDisc (DigitalVideoDisc disc) {
-		String warning = "";
-		if (itemsOrdered.remove(disc)) {
-			System.out.println("Disc removed.");
+		if (itemsOrdered.remove(medium)) {
+			System.out.println("Media (Disc/Book) removed.");
 		} else {
-			warning = "Disc doesn't exist.";
+			warning = "Media (Disc/Book) doesn't exist.";
 			System.out.println(warning);
 		}
 		return warning;
 
 	}
 	
-	public String getContentAllDVD() {
+	public String getContentAllMedia() {
 		String buffer = "";
         for (int i = 0; i < itemsOrdered.size(); i++) {
             buffer += itemsOrdered.get(i).getTitle() + "\n";
@@ -90,10 +66,10 @@ public class Cart {
 		System.out.println("***********************CART***********************");
 		System.out.println("Ordered Items:");
 		
-		DigitalVideoDisc dvd;
+		Media medium;
         for (int i = 0; i < this.itemsOrdered.size(); i++) {
-        	dvd = this.itemsOrdered.get(i);
-        	System.out.printf("%d. %s\n", i+1, dvd.toString());
+        	medium = this.itemsOrdered.get(i);
+        	System.out.printf("%d. %s\n", i+1, medium.toString());
         }
 
 		System.out.println("Total cost: " + this.totalCost() + "$");
@@ -103,11 +79,11 @@ public class Cart {
 	public void searchByID(int id) {
 		System.out.println("Search for: " + id);
 		
-		DigitalVideoDisc dvd;
+		Media medium;
         for (int i = 0; i < this.itemsOrdered.size(); i++) {
-        	dvd = this.itemsOrdered.get(i);
-        	if (dvd.getId() == id) {
-        		System.out.println("Found: " + dvd.toString());
+        	medium = this.itemsOrdered.get(i);
+        	if (medium.getId() == id) {
+        		System.out.println("Found: " + medium.toString());
         		return;
         	}
         }
@@ -118,11 +94,11 @@ public class Cart {
 		System.out.println("- Search for: \"" + keywords + "\"");
 		
 		int found = 0;
-		DigitalVideoDisc dvd;
+		Media medium;
         for (int i = 0; i < this.itemsOrdered.size(); i++) {
-        	dvd = this.itemsOrdered.get(i);
-        	if (dvd.isMatch(keywords)) {
-        		System.out.println("Found: " + dvd.toString());
+        	medium = this.itemsOrdered.get(i);
+        	if (medium.isMatch(keywords)) {
+        		System.out.println("Found: " + medium.toString());
         		// No return because there maybe many found
         		found += 1;
         	}

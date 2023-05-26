@@ -6,7 +6,6 @@ import java.util.List;
 public class Book extends Media {
 	private List<String> authors = new ArrayList<String>();
 
-	
 	public void addAuthor(String authorName) {
 		if (this.authors.contains(authorName)) {
 			System.out.println("Author already added.");
@@ -22,6 +21,25 @@ public class Book extends Media {
 		} else {
 			System.out.println("Removed " + authorName);
 		}	
+	}
+	
+	public String getAuthors() {
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < authors.size(); i++) {
+			stringBuilder.append(authors.get(i));
+			if (i != authors.size() - 1)
+				stringBuilder.append(", ");
+		}
+		return stringBuilder.toString();
+	}
+	
+	public String toString() {
+		return String.format("DVD - %s - %s - %s - %s: %s $", 
+			this.getTitle(), 
+			this.getCategory(), 
+			this.getAuthors(),
+			this.getCost()
+		);
 	}
 
 	public Book(String title, String category, float cost) {

@@ -21,13 +21,13 @@ public class Aims {
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars",		"Science Fiction",	"George Lucas", 87, 24.95f);
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin",			"Animation", 		18.99f);
 		
-		anOrder.addDigitalVideoDisc(dvd1);
-		anOrder.addDigitalVideoDisc(dvd2);
-		anOrder.addDigitalVideoDisc(dvd3);
+		anOrder.addMedia(dvd1);
+		anOrder.addMedia(dvd2);
+		anOrder.addMedia(dvd3);
 
 		System.out.println("Total Cost: " + anOrder.totalCost());
 		
-		anOrder.removeDigitalVideoDisc(dvd2);
+		anOrder.removeMedia(dvd2);
 		System.out.println("Total Cost after removing Star Wars 24.95: " + anOrder.totalCost() +"\n");
 		
 		System.out.println("More testings:");
@@ -68,7 +68,7 @@ public class Aims {
 		gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        JTextArea dvdtext = new JTextArea(anOrder.getContentAllDVD());
+        JTextArea dvdtext = new JTextArea(anOrder.getContentAllMedia());
         dvdtext.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(dvdtext);
 		scrollPane.setPreferredSize(new Dimension(80, 100));
@@ -113,11 +113,11 @@ public class Aims {
                 public void actionPerformed(ActionEvent e) {
                 	String warning = "";
                 	if (appmode == MODE_ADD) {
-                    	warning = anOrder.addDigitalVideoDisc(d);		
+                    	warning = anOrder.addMedia(d);		
                 	} else if (appmode == MODE_REMOVE) {
-                		warning = anOrder.removeDigitalVideoDisc(d);
+                		warning = anOrder.removeMedia(d);
                 	}
-            		dvdtext.setText(anOrder.getContentAllDVD());
+            		dvdtext.setText(anOrder.getContentAllMedia());
             		cartLabel.setText("Cart      " + warning);
             		costLabel.setText("Total: $" + String.format("%.2f", anOrder.totalCost()) );
                 }

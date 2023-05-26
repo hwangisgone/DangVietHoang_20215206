@@ -33,7 +33,20 @@ public abstract class Media {
         this.cost = cost;
 	}
 
-
+	public boolean isMatch(String keywords) {
+		// Split the keywords into an array of individual words
+		String[] words = keywords.toLowerCase().split("\\s+");
+		
+		// Check if any word in the array matches the Book/Disc's title (case-insensitive)
+		for (String word : words) {
+			if (this.getTitle().toLowerCase().contains(word)) {
+				return true;
+			}
+		}
+		   
+		// No match found
+		return false;
+	}
 	
 	
 
