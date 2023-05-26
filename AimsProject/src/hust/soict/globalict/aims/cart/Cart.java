@@ -3,7 +3,7 @@ package hust.soict.globalict.aims.cart;
 import java.util.ArrayList;
 import java.util.List;
 
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;

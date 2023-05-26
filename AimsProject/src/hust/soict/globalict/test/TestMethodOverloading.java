@@ -1,6 +1,7 @@
 package hust.soict.globalict.test;
 
 import hust.soict.globalict.aims.disc.*;
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.cart.*;
 
 public class TestMethodOverloading {

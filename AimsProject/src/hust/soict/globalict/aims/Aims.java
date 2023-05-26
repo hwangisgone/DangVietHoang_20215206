@@ -4,9 +4,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
 import hust.soict.globalict.aims.cart.Cart;
 // import hust.soict.globalict.aims.store.*;
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
 
 public class Aims {
 	private static final int MODE_ADD = 1;
