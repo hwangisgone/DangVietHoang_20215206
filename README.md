@@ -17,10 +17,11 @@ Links are working (12/05/2023)
 
 ## Answers.txt to Labs
 [Lab02](AimsProject/answers_Lab02.txt): Problem Modeling and Encapsulation \
-[Lab03](AimsProject/answers_Lab03.txt): Basic Object-Oriented Techniques & Release Workflow
+[Lab03](AimsProject/answers_Lab03.txt): Basic Object-Oriented Techniques & Release Workflow \
+[Lab04]()
 
 ## Branch Releases
-[`release/lab03`](https://github.com/hwangisgone/DangVietHoang_20215206/tree/release/lab03)
-[`release/lab04`](https://github.com/hwangisgone/DangVietHoang_20215206/tree/release/lab04
+[`release/lab03`](https://github.com/hwangisgone/DangVietHoang_20215206/tree/release/lab03): Completed \
+[`release/lab04`](https://github.com/hwangisgone/DangVietHoang_20215206/tree/release/lab04): On-going \
 
 Note Lab03: Branch `feature/search-cart` wasn't created because the search was already implemented in `feature/print-cart`.
