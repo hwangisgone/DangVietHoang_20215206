@@ -19,18 +19,18 @@ public abstract class Media {
 	public Media(String title) {
 		// TODO Auto-generated constructor stub
 		this.setId();
-        this.title = title;
+		this.title = title;
 	}
 	public Media(String title, String category) {
 		this.setId();
-        this.title = title;
-        this.category = category;
+		this.title = title;
+		this.category = category;
 	}
 	public Media(String title, String category, float cost) {
 		this.setId();
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+		this.title = title;
+		this.category = category;
+		this.cost = cost;
 	}
 
 	public boolean isMatch(String keywords) {
@@ -48,7 +48,16 @@ public abstract class Media {
 		return false;
 	}
 	
-	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) {
+			return true;
+		}
+		if (!(obj instanceof Media)) {
+			return false;
+		}
+		return ((Media)obj).getTitle() == this.getTitle();
+	}
 
 	public String getTitle() {
 		return title;
