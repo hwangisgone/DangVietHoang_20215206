@@ -12,8 +12,13 @@ public class Cart {
 	public String addMedia (Media medium) {
 		String warning = "";
 		if (this.itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
-			itemsOrdered.add(medium);
-			System.out.printf("Disc added to cart. (%d)\n", itemsOrdered.size());
+			if (itemsOrdered.contains(medium)) {
+				warning = "Media already added. Cannot add.";
+				System.out.println(warning);
+			} else {
+				itemsOrdered.add(medium);
+				System.out.printf("Item added to cart. (%d)\n", itemsOrdered.size());	
+			}
 		} else {
 			warning = "The cart is full. Cannot add.";
 			System.out.println(warning);
