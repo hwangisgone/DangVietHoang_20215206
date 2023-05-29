@@ -10,10 +10,17 @@ DANG VIET HOANG ● 20215206
 ● Iterate through the list and print out the information of the media by using toString() method. Observe what happens and explain in detail.
 
 12.	Sort media in the cart
-Question: Alternatively, to compare items in the cart, instead of using Comparator, we can use the Comparable interface and override the compareTo()method. You can refer to the Java docs to see the information of this interface. 
+Alternatively, to compare items in the cart, instead of using Comparator, we can use the Comparable interface and override the compareTo()method. You can refer to the Java docs to see the information of this interface. 
 Suppose we are taking this Comparable interface approach.
 ● What class should implement the Comparable interface?
+- Media class and/or its subclasses
+
 ● In those classes, how should you implement the compareTo()method be to reflect the ordering that we want?
+- (Implemented in Media.java)
+
 ● Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+- No we can't. There should only be one natural ordering when comparing object with Comparable interface.
+
 ● Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+- To accommodate the different ordering rule for DVDs (title, decreasing length, cost), you override the compareTo() method in DVD class. (code in DigitalVideoDisc.java)
 

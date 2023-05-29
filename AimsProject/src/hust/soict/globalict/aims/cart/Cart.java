@@ -1,6 +1,7 @@
 package hust.soict.globalict.aims.cart;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import hust.soict.globalict.aims.media.Media;
@@ -106,5 +107,16 @@ public class Cart {
         if (found == 0) {
         	System.out.println("Disc not found.");    	
         }
+	}
+	
+	
+	public void sortByTitleCost() {
+		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+	}
+	public void sortByCostTitle() {
+		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+	}
+	public void sortComparable() {
+		Collections.sort(this.itemsOrdered);
 	}
 }

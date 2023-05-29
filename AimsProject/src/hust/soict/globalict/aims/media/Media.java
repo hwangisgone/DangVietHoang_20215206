@@ -1,6 +1,14 @@
 package hust.soict.globalict.aims.media;
 
-public abstract class Media {
+import java.util.Comparator;
+
+public abstract class Media implements Comparable<Media> {
+	@Override
+	public int compareTo(Media o2) {
+		int titleComparison = this.title.compareTo(o2.title);
+		return titleComparison != 0 ? titleComparison : Double.compare(o2.cost, this.cost);
+	}
+	
 	private int id;
 	private String title;
 	private String category;
@@ -19,18 +27,18 @@ public abstract class Media {
 	public Media(String title) {
 		// TODO Auto-generated constructor stub
 		this.setId();
-        this.title = title;
+		this.title = title;
 	}
 	public Media(String title, String category) {
 		this.setId();
-        this.title = title;
-        this.category = category;
+		this.title = title;
+		this.category = category;
 	}
 	public Media(String title, String category, float cost) {
 		this.setId();
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+		this.title = title;
+		this.category = category;
+		this.cost = cost;
 	}
 
 	public boolean isMatch(String keywords) {
@@ -48,7 +56,8 @@ public abstract class Media {
 		return false;
 	}
 	
-	
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 
 	public String getTitle() {
 		return title;

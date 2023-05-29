@@ -1,6 +1,6 @@
 package hust.soict.globalict.aims.media;
 
-public class DigitalVideoDisc extends Disc{
+public class DigitalVideoDisc extends Disc implements Comparable<Media>{
 
 //	public String getContents() {
 //		String buffer = getTitle + "<br/>" + category + "<br/>" + director + "<br/>" + length + "<br/>" + cost + "<br/>";
@@ -46,4 +46,19 @@ public class DigitalVideoDisc extends Disc{
 		super(title);
 		// TODO Auto-generated constructor stub
 	}
+	
+    @Override
+    public int compareTo(Media o2) {
+        if (o2 instanceof DigitalVideoDisc) {
+            DigitalVideoDisc dvd2 = (DigitalVideoDisc) o2;
+            int titleComparison = this.getTitle().compareTo(dvd2.getTitle());
+            if (titleComparison != 0) { return titleComparison; }
+            
+            int lengthComparison = Integer.compare(dvd2.getLength(), this.getLength());
+            if (lengthComparison != 0) { return lengthComparison; }
+            
+            return Double.compare(dvd2.getCost(), this.getCost());
+        }
+        return super.compareTo(o2);
+    }
 }
