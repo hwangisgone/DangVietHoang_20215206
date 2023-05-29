@@ -3,7 +3,7 @@ package hust.soict.globalict.test.cart;
 import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.media.*;
 
-public class CartTest {
+public class CartSearchTermsTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
