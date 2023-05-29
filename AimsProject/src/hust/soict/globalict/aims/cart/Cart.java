@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private List<Media> itemsOrdered = new ArrayList<Media>();
+	
+	public void clear() {
+		this.itemsOrdered = new ArrayList<Media>();
+	}
 	
 	public String addMedia (Media medium) {
 		String warning = "";
@@ -56,6 +61,16 @@ public class Cart {
         }
         
         return buffer;
+	}
+	
+	public int getDVDCount() {
+		int count = 0;
+        for (int i = 0; i < itemsOrdered.size(); i++) {
+            if (itemsOrdered.get(i) instanceof DigitalVideoDisc) {
+            	count = count + 1;
+            };
+        }
+		return count;
 	}
 	
 	public float totalCost() {

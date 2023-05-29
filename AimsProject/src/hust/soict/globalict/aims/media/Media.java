@@ -96,5 +96,11 @@ public abstract class Media implements Comparable<Media> {
 		this.cost = cost;
 	}
 
-	
+	public void playMedia() {
+		if (this instanceof Playable) {
+			((Playable) this).play();
+		} else {
+			System.out.println("Playable media not found. Please try again.");
+		}
+	}
 }

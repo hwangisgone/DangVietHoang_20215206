@@ -27,9 +27,21 @@ public class Store {
 	public void print() {
 		System.out.print("[");
 		int lastindex = this.itemsInStore.size() - 1;
-        for (int i = 0; i <= lastindex; i++) {
-            System.out.print(this.itemsInStore.get(i).getTitle() + (i == lastindex ? "" : ", "));
-        }
-        System.out.println("]");
+		for (int i = 0; i <= lastindex; i++) {
+			System.out.print(this.itemsInStore.get(i).getTitle() + (i == lastindex ? "" : ", "));
+		}
+		System.out.println("]");
+	}
+	
+	public Media searchByTitle(String title) { // Return one only
+		Media medium;
+		for (int i = 0; i < this.itemsInStore.size(); i++) {
+			medium = this.itemsInStore.get(i);
+			if (medium.isMatch(title)) {
+				return medium;
+			}
+		}
+		
+		return null;
 	}
 }

@@ -1,6 +1,6 @@
 package hust.soict.globalict.aims.media;
 
-public class DigitalVideoDisc extends Disc implements Playable implements Comparable<Media>{
+public class DigitalVideoDisc extends Disc implements Playable, Comparable<Media>{
 
 //	public String getContents() {
 //		String buffer = getTitle + "<br/>" + category + "<br/>" + director + "<br/>" + length + "<br/>" + cost + "<br/>";
