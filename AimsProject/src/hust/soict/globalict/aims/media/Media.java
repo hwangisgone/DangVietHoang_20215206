@@ -51,6 +51,7 @@ public abstract class Media {
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == this) {
+			System.out.println("Duplicate media.");
 			return true;
 		}
 		if (!(obj instanceof Media)) {
