@@ -34,7 +34,7 @@ public class Book extends Media {
 	}
 	
 	public String toString() {
-		return String.format("DVD - %s - %s - %s - %s: %s $", 
+		return String.format("Book - %s - %s - %s: %s $", 
 			this.getTitle(), 
 			this.getCategory(), 
 			this.getAuthors(),

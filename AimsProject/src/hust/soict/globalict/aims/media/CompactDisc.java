@@ -28,6 +28,16 @@ public class CompactDisc extends Disc {
 		}	
 	}
 	
+	public String toString() {
+		return String.format("CD - %s - %s - %s - %s: %s $", 
+			this.getTitle(), 
+			this.getCategory(), 
+			this.getArtist(),
+			this.getLength(),
+			this.getCost()
+		);
+	}
+	
 	public int getLength() {
 		int len = 0;
         for (Track track : tracks) {
