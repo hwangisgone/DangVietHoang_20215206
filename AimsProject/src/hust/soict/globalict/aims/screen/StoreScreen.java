@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -18,6 +20,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.store.Store;
 
 public class StoreScreen extends JFrame {
@@ -74,6 +78,11 @@ public class StoreScreen extends JFrame {
 		JPanel center = new JPanel();
 		center.setLayout(new GridLayout(3,3,2,2));
 		
+		List<Media> mediaInStore = store.getItemsInStore();
+		for (int i = 0; i < mediaInStore.size(); i++) {
+			MediaStore cell = new MediaStore(mediaInStore.get(i));
+			center.add(cell);
+		}
 		
 		return center; 
 	}
@@ -89,5 +98,9 @@ public class StoreScreen extends JFrame {
 		setVisible(true);
 		setTitle("Store");
 		setSize(1024, 768);
+	}
+	
+	public static void main(String[] args) {
+		new StoreScreen(new Store());
 	}
 }
