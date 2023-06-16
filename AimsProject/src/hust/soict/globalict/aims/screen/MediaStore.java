@@ -1,15 +1,19 @@
 package hust.soict.globalict.aims.screen;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import hust.soict.globalict.aims.media.Media;
@@ -32,8 +36,15 @@ public class MediaStore extends JPanel {
 		container.setLayout(new FlowLayout(FlowLayout.CENTER));
 		
 		container.add(new JButton("Add to cart"));
+
 		if (media instanceof Playable) {
-			container.add(new JButton("Play"));
+			JButton btnPlay = new JButton("Play");
+			btnPlay.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(null, "Playing " + media.getTitle(), "Playable Media", JOptionPane.INFORMATION_MESSAGE);
+				}
+			});
+			container.add(btnPlay);
 		}
 		
 		this.add(Box.createVerticalGlue());
