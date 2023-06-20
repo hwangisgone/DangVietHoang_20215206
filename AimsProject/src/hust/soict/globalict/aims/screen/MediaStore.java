@@ -16,13 +16,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.Playable;
 
 public class MediaStore extends JPanel {
 	private Media media;
-	public MediaStore(Media media) {
+	private Cart cart;
+	
+	public MediaStore(Media media, Cart cart) {
 		this.media = media;
+		this.cart = cart;
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		JLabel title = new JLabel(media.getTitle());
@@ -35,7 +39,16 @@ public class MediaStore extends JPanel {
 		JPanel container = new JPanel();
 		container.setLayout(new FlowLayout(FlowLayout.CENTER));
 		
-		container.add(new JButton("Add to cart"));
+
+		JButton btnCart = new JButton("Add to cart");
+		btnCart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	cart.addMedia(media);
+            	JOptionPane.showMessageDialog(null, "Media added to cart: " + media.getTitle(), "Playable Media", JOptionPane.INFORMATION_MESSAGE);
+            }
+		});
+		container.add(btnCart);
 
 		if (media instanceof Playable) {
 			JButton btnPlay = new JButton("Play");

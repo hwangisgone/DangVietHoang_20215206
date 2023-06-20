@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.soict.globalict.aims.screen.add.AddDigitalVideoDiscToStoreScreenController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Options">
+            <items>
+                <Menu mnemonicParsing="false" text="Update Store">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#addBookScreen" text="Add Book" />
+                        <MenuItem mnemonicParsing="false" onAction="#addCDScreen" text="Add CD" />
+                        <MenuItem mnemonicParsing="false" text="Add DVD" />
+                  </items>
+                </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#viewStoreScreen" text="View Store" />
+                  <MenuItem mnemonicParsing="false" onAction="#viewCartScreen" text="View Cart" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets left="100.0" right="100.0" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Add DVD to Store">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Label prefWidth="120.0" text="Title">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldTitle" promptText="Name" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="110.0" layoutY="68.0" spacing="20.0">
+               <children>
+                  <Label prefWidth="120.0" text="Category">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldCategory" promptText="Name" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="110.0" layoutY="68.0" spacing="20.0">
+               <children>
+                  <Label prefWidth="120.0" text="Director">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldDirector" promptText="Name" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="110.0" layoutY="68.0" spacing="20.0">
+               <children>
+                  <Label prefWidth="120.0" text="Length:">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelLength" prefWidth="80.0" text="0 mins">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Slider fx:id="sliderLength" blockIncrement="5.0" majorTickUnit="20.0" max="180.0" min="60.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="110.0" layoutY="179.0" spacing="20.0">
+               <children>
+                  <Label prefWidth="120.0" text="Cost:">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Spinner fx:id="spinnerCost" />
+                  <Label prefWidth="80.0" text="\$$$">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#addDVD" text="Add" textFill="#0071ff">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets top="30.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>

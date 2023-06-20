@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +25,19 @@ import javax.swing.JPanel;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.store.Store;
+import hust.soict.globalict.aims.cart.Cart;
 
 public class StoreScreen extends JFrame {
 	private Store store;
+	private Cart cart;
+	
+	private class goToCart implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new CartScreen(store, cart);
+            dispose();
+        }
+	}
 	
 	private JPanel createNorth() {
 		JPanel north = new JPanel();
@@ -42,9 +54,11 @@ public class StoreScreen extends JFrame {
 		smUpdateStore.add(new JMenuItem("Add CD"));
 		smUpdateStore.add(new JMenuItem("Add DVD"));
 		
+		JMenuItem viewCart = new JMenuItem("View cart");
+		viewCart.addActionListener(new goToCart());
+		
 		menu.add(smUpdateStore);
-		menu.add(new JMenuItem("View store"));
-		menu.add(new JMenuItem("View cart"));
+		menu.add(viewCart);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -62,6 +76,7 @@ public class StoreScreen extends JFrame {
 		title.setForeground(Color.CYAN);
 		
 		JButton cart = new JButton("View cart");
+		cart.addActionListener(new goToCart());
 		cart.setPreferredSize(new Dimension(100, 50));
 		cart.setMaximumSize(new Dimension(100, 50));
 		
@@ -78,24 +93,18 @@ public class StoreScreen extends JFrame {
 		JPanel center = new JPanel();
 		center.setLayout(new GridLayout(3,3,2,2));
 		
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King",	"Animation",		"Roger Allers", 87, 19.95f);
-		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars",		"Science Fiction",	"George Lucas", 87, 24.95f);
-		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin",			"Animation", 		18.99f);
-		
-		store.addMedia(dvd1);
-		store.addMedia(dvd2);
-		
 		List<Media> mediaInStore = store.getItemsInStore();
 		for (int i = 0; i < mediaInStore.size(); i++) {
-			MediaStore cell = new MediaStore(mediaInStore.get(i));
+			MediaStore cell = new MediaStore(mediaInStore.get(i), cart);
 			center.add(cell);
 		}
 		
 		return center; 
 	}
 	
-	public StoreScreen(Store store) {
+	public StoreScreen(Store store, Cart cart) {
 		this.store = store;
+		this.cart = cart;
 		Container cp = getContentPane();
 		cp.setLayout(new BorderLayout());
 		
@@ -108,6 +117,15 @@ public class StoreScreen extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new StoreScreen(new Store());
+		Store theStore = new Store();
+		Cart theCart = new Cart();
+		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King",	"Animation",		"Roger Allers", 87, 19.95f);
+		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars",		"Science Fiction",	"George Lucas", 87, 24.95f);
+		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin",			"Animation", 		18.99f);
+		
+		theStore.addMedia(dvd1);
+		theStore.addMedia(dvd2);
+		
+		new StoreScreen(theStore, theCart);
 	}
 }

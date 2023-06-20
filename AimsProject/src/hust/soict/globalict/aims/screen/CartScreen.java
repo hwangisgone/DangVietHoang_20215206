@@ -13,13 +13,16 @@ import javafx.fxml.*;
 import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
+import hust.soict.globalict.aims.store.Store;
 
 public class CartScreen extends JFrame {
+	private Store store;
 	private Cart cart;
 	
-	public CartScreen (Cart cart) {
+	public CartScreen (Store store, Cart cart) {
 		super();
 		
+		this.store = store;
 		this.cart = cart;
 		
 		JFXPanel fxPanel = new JFXPanel();
@@ -36,9 +39,16 @@ public class CartScreen extends JFrame {
 					FXMLLoader loader = new FXMLLoader(getClass()
 							.getResource("cart.fxml"));
 					CartScreenController controller = new CartScreenController(cart);
+
 					loader.setController(controller);
 					
 					Parent root = loader.load();
+					
+					controller.getViewStoreMenuItem().setOnAction(event -> {
+						new StoreScreen(store, cart);
+		                dispose();
+		            });
+					
 					fxPanel.setScene(new Scene(root, 600, 600));
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -73,7 +83,7 @@ public class CartScreen extends JFrame {
 		
 		cart.print();
 		
-		new CartScreen(cart);
+		new CartScreen(new Store(), cart);
 	}
 
 }
