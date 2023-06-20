@@ -16,14 +16,14 @@ import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.store.Store;
 
 public class CartScreen extends JFrame {
-	private Store store;
 	private Cart cart;
+	private StoreScreen storeScreen;
 	
-	public CartScreen (Store store, Cart cart) {
+	public CartScreen (StoreScreen storeScreen, Cart cart) {
 		super();
 		
-		this.store = store;
 		this.cart = cart;
+		this.storeScreen = storeScreen;
 		
 		JFXPanel fxPanel = new JFXPanel();
 		this.add(fxPanel);
@@ -45,8 +45,8 @@ public class CartScreen extends JFrame {
 					Parent root = loader.load();
 					
 					controller.getViewStoreMenuItem().setOnAction(event -> {
-						new StoreScreen(store, cart);
-		                dispose();
+						storeScreen.setVisible(true);
+		                setVisible(false);
 		            });
 					
 					fxPanel.setScene(new Scene(root, 600, 600));
@@ -55,7 +55,6 @@ public class CartScreen extends JFrame {
 				}
 			}
 		});
-		
 	}
 
 	public static void main(String[] args) {
@@ -83,7 +82,7 @@ public class CartScreen extends JFrame {
 		
 		cart.print();
 		
-		new CartScreen(new Store(), cart);
+		new CartScreen(new StoreScreen(new Store(), cart), cart);
 	}
 
 }
