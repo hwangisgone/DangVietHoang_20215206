@@ -2,6 +2,8 @@ package hust.soict.globalict.aims.media;
 
 import java.util.Comparator;
 
+import hust.soict.globalict.aims.exception.PlayerException;
+
 public abstract class Media implements Comparable<Media> {
 	@Override
 	public int compareTo(Media o2) {
@@ -98,7 +100,11 @@ public abstract class Media implements Comparable<Media> {
 
 	public void playMedia() {
 		if (this instanceof Playable) {
-			((Playable) this).play();
+			try {
+				((Playable) this).play();
+			} catch (PlayerException e) {
+				System.err.println(e);
+			}
 		} else {
 			System.out.println("Playable media not found. Please try again.");
 		}
