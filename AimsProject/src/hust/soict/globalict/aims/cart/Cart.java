@@ -6,13 +6,19 @@ import java.util.List;
 
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private List<Media> itemsOrdered = new ArrayList<Media>();
-	
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
+
+	public ObservableList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
+
 	public void clear() {
-		this.itemsOrdered = new ArrayList<Media>();
+		this.itemsOrdered.clear();
 	}
 	
 	public String addMedia (Media medium) {
