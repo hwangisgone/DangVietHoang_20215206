@@ -18,7 +18,7 @@ public class Cart {
 	}
 
 	public void clear() {
-		this.itemsOrdered = FXCollections.observableArrayList();
+		this.itemsOrdered.clear();
 	}
 	
 	public String addMedia (Media medium) {

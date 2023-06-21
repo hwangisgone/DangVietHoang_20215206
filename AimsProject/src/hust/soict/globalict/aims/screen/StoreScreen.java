@@ -31,10 +31,24 @@ public class StoreScreen extends JFrame {
 	private Store store;
 	private CartScreen cartScreen;
 	
+	private JPanel changingPanel;
+	
 	private class goToCart implements ActionListener {
+		private boolean book;
+		private boolean cd;
+		private boolean dvd;
+		
+		public goToCart(boolean book, boolean cd, boolean dvd) {
+			this.book = book;
+			this.cd = cd;
+			this.dvd = dvd;
+		}
+		
         @Override
         public void actionPerformed(ActionEvent e) {
         	cartScreen.setVisible(true);
+        	cartScreen.changeTotalCost();
+        	cartScreen.switchCart(book, cd, dvd);
         	setVisible(false);
         }
 	}
@@ -50,12 +64,20 @@ public class StoreScreen extends JFrame {
 	private JMenuBar createMenuBar() {
 		JMenu menu = new JMenu("Options");
 		JMenu smUpdateStore = new JMenu("Update Store");
-		smUpdateStore.add(new JMenuItem("Add Book"));
-		smUpdateStore.add(new JMenuItem("Add CD"));
-		smUpdateStore.add(new JMenuItem("Add DVD"));
+
+		JMenuItem addBook = new JMenuItem("Add Book");
+		addBook.addActionListener(new goToCart(true, false, false));
+		JMenuItem addCD = new JMenuItem("Add CD");
+		addCD.addActionListener(new goToCart(false, true, false));
+		JMenuItem addDVD = new JMenuItem("Add DVD");
+		addDVD.addActionListener(new goToCart(false, false, true));
+		
+		smUpdateStore.add(addBook);
+		smUpdateStore.add(addCD);
+		smUpdateStore.add(addDVD);
 		
 		JMenuItem viewCart = new JMenuItem("View cart");
-		viewCart.addActionListener(new goToCart());
+		viewCart.addActionListener(new goToCart(false, false, false));
 		
 		menu.add(smUpdateStore);
 		menu.add(viewCart);
@@ -76,7 +98,7 @@ public class StoreScreen extends JFrame {
 		title.setForeground(Color.CYAN);
 		
 		JButton cart = new JButton("View cart");
-		cart.addActionListener(new goToCart());
+		cart.addActionListener(new goToCart(false, false, false));
 		cart.setPreferredSize(new Dimension(100, 50));
 		cart.setMaximumSize(new Dimension(100, 50));
 		
@@ -104,17 +126,34 @@ public class StoreScreen extends JFrame {
 	
 	public StoreScreen(Store store, Cart cart) {
 		this.store = store;
-		this.cartScreen = new CartScreen(this, cart);
+		this.cartScreen = new CartScreen(this, store, cart);
 		this.cartScreen.setVisible(false);
+		
+		this.changingPanel = createCenter(cart);
+		
 		Container cp = getContentPane();
 		cp.setLayout(new BorderLayout());
 		
 		cp.add(createNorth(), BorderLayout.NORTH);
-		cp.add(createCenter(cart), BorderLayout.CENTER);
+		cp.add(changingPanel, BorderLayout.CENTER);
 		
 		setVisible(true);
 		setTitle("Store");
 		setSize(1024, 768);
+	}
+	
+	public void refreshStore(Cart cart) {
+		Container cp = getContentPane();
+		cp.remove(changingPanel);
+
+		this.changingPanel = createCenter(cart);
+		cp.add(changingPanel, BorderLayout.CENTER);
+		
+		cp.revalidate();
+		cp.repaint();
+		
+		this.revalidate();
+		this.repaint();
 	}
 	
 	public static void main(String[] args) {

@@ -44,8 +44,12 @@ public class MediaStore extends JPanel {
 		btnCart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	cart.addMedia(media);
+            	String warning = cart.addMedia(media);
+            	if (warning.isEmpty()) {
             	JOptionPane.showMessageDialog(null, "Media added to cart: " + media.getTitle(), "Playable Media", JOptionPane.INFORMATION_MESSAGE);
+            	} else {
+            		JOptionPane.showMessageDialog(null, warning, "Warning", JOptionPane.ERROR_MESSAGE);
+            	}
             }
 		});
 		container.add(btnCart);
