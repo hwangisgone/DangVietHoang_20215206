@@ -14,10 +14,11 @@ public class Track implements Playable {
 		if (!(obj instanceof Track)) {
 			return false;
 		}
-		return ((Track)obj).getTitle() == this.getTitle() && 
+		return ((Track)obj).getTitle() == this.getTitle() &&
 				((Track)obj).getLength() == this.getLength();
 	}
-		
+
+	@Override
 	public void play() throws PlayerException {
 		if (this.getLength() > 0) {
 			System.out.println("Playing Track: " + this.getTitle());
@@ -26,14 +27,14 @@ public class Track implements Playable {
 			throw new PlayerException("ERROR: Track " + this.getTitle() + " length is non-positive");
 		}
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
 	public int getLength() {
 		return length;
 	}
-	
+
 	public Track(String title, int length) {
 		super();
 		this.title = title;

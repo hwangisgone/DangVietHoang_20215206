@@ -6,13 +6,13 @@ import java.util.List;
 import hust.soict.globalict.aims.media.Media;
 
 public class Store {
-	private List<Media> itemsInStore = new ArrayList<Media>();
-	
+	private List<Media> itemsInStore = new ArrayList<>();
+
 	public void addMedia(Media medium) {
 		this.itemsInStore.add(medium);
 		System.out.println("Item added.");
 	}
-	
+
 	public String removeMedia(Media medium) {
 		String warning = "";
 		if (this.itemsInStore.remove(medium)) {
@@ -23,7 +23,7 @@ public class Store {
 		}
 		return warning;
 	}
-	
+
 	public void print() {
 		System.out.print("[");
 		int lastindex = this.itemsInStore.size() - 1;
@@ -32,16 +32,16 @@ public class Store {
 		}
 		System.out.println("]");
 	}
-	
+
 	public Media searchByTitle(String title) { // Return one only
 		Media medium;
-		for (int i = 0; i < this.itemsInStore.size(); i++) {
-			medium = this.itemsInStore.get(i);
+		for (Media element : this.itemsInStore) {
+			medium = element;
 			if (medium.isMatch(title)) {
 				return medium;
 			}
 		}
-		
+
 		return null;
 	}
 

@@ -7,9 +7,9 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.*;
+import javafx.scene.shape.Circle;
 
-public class PainterController {	
+public class PainterController {
     @FXML
     private Pane drawingAreaPane;
 
@@ -21,7 +21,7 @@ public class PainterController {
 
     @FXML
     private RadioButton penRadio;
-    
+
     @FXML
     void clearButtonPressed(ActionEvent event) {
     	drawingAreaPane.getChildren().clear();
@@ -31,7 +31,7 @@ public class PainterController {
     void drawingAreaMouseDragged(MouseEvent event) {
     	if (penRadio.isSelected()) {
 	    	Circle newCircle = new Circle(event.getX(), event.getY(), 4);
-	    	
+
 	    	drawingAreaPane.getChildren().add(newCircle);
     	} else if (eraserRadio.isSelected()) {
             for (int i = drawingAreaPane.getChildren().size() - 1; i >= 0; i--) {
@@ -41,7 +41,7 @@ public class PainterController {
                     double circleX = circle.getCenterX();
                     double circleY = circle.getCenterY();
 
-                    if (Math.abs(circle.getCenterX() - event.getX()) <= 8 && 
+                    if (Math.abs(circle.getCenterX() - event.getX()) <= 8 &&
                     		Math.abs(circle.getCenterY() - event.getY()) <= 8) {
                     	drawingAreaPane.getChildren().remove(i);
                     }

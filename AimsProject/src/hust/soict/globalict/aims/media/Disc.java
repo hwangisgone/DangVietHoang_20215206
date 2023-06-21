@@ -4,8 +4,8 @@ public class Disc extends Media {
 	private String director;
 	private int length;
 
-	
-	
+
+
 
 
 
@@ -22,7 +22,7 @@ public class Disc extends Media {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+
 	// By title, category, director, and cost
 	public Disc(String title, String category, String director, float cost) {
 		super(title, category, cost);
@@ -40,9 +40,9 @@ public class Disc extends Media {
 		this.director = director;
 		this.length = length;
 	}
-	
 
-	
+
+
 	public String getDirector() {
 		return director;
 	}

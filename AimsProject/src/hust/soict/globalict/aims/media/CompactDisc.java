@@ -7,12 +7,12 @@ import hust.soict.globalict.aims.exception.PlayerException;
 
 public class CompactDisc extends Disc implements Playable {
 	private String artist;
-	private List<Track> tracks = new ArrayList<Track>();
+	private List<Track> tracks = new ArrayList<>();
 
 	public String getArtist() {
 		return artist;
 	}
-	
+
 	public void addTrack(Track oneTrack) {
 		if (this.tracks.contains(oneTrack)) {
 			System.out.println("Track already added.");
@@ -21,25 +21,27 @@ public class CompactDisc extends Disc implements Playable {
 			System.out.println("Added " + oneTrack);
 		}
 	}
-	
+
 	public void removeTrack(Track oneTrack) {
 		if (this.tracks.remove(oneTrack)) {
 			System.out.println("Track does not exist.");
 		} else {
 			System.out.println("Removed " + oneTrack);
-		}	
+		}
 	}
-	
+
+	@Override
 	public String toString() {
-		return String.format("CD - %s - %s - %s - %s: %s $", 
-			this.getTitle(), 
-			this.getCategory(), 
+		return String.format("CD - %s - %s - %s - %s: %s $",
+			this.getTitle(),
+			this.getCategory(),
 			this.getArtist(),
 			this.getLength(),
 			this.getCost()
 		);
 	}
-	
+
+	@Override
 	public int getLength() {
 		int len = 0;
         for (Track track : tracks) {
@@ -47,12 +49,13 @@ public class CompactDisc extends Disc implements Playable {
         }
 		return len;
 	}
-	
+
+	@Override
 	public void play() throws PlayerException {
 		if(this.getLength() > 0) {
 			System.out.println("Disc Artist: " + this.getArtist());
 			System.out.println("Disc length: " + this.getLength());
-			
+
 			int index = 0;
 	        for (Track track : tracks) {
 	        	try {
@@ -67,7 +70,7 @@ public class CompactDisc extends Disc implements Playable {
 			throw new PlayerException("ERROR: CD length is non-positive");
 		}
 	}
-	
+
 	public CompactDisc(String title, String category, float cost, String artist) {
 		super(title, category, cost);
 		this.artist = artist;

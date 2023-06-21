@@ -10,14 +10,14 @@ public abstract class Media implements Comparable<Media> {
 		int titleComparison = this.title.compareTo(o2.title);
 		return titleComparison != 0 ? titleComparison : Double.compare(o2.cost, this.cost);
 	}
-	
+
 	private int id;
 	private String title;
 	private String category;
 	private float cost;
-	
+
 	private static int numMedia = 1;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -46,18 +46,18 @@ public abstract class Media implements Comparable<Media> {
 	public boolean isMatch(String keywords) {
 		// Split the keywords into an array of individual words
 		String[] words = keywords.toLowerCase().split("\\s+");
-		
+
 		// Check if any word in the array matches the Book/Disc's title (case-insensitive)
 		for (String word : words) {
 			if (this.getTitle().toLowerCase().contains(word)) {
 				return true;
 			}
 		}
-		   
+
 		// No match found
 		return false;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == this) {

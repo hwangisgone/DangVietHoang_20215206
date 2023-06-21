@@ -1,4 +1,4 @@
-package hust.soict.globalict.aims;
+package hust.soict.globalict.test.oldunused;
 
 import java.awt.*;
 import java.awt.event.*;

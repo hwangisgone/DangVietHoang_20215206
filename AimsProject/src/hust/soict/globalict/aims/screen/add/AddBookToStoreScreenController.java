@@ -2,29 +2,25 @@ package hust.soict.globalict.aims.screen.add;
 
 import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.CompactDisc;
-import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Track;
 import hust.soict.globalict.aims.store.Store;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.TextField;
 
 public class AddBookToStoreScreenController {
 	private Store store;
-	
+
     public void setStore(Store store) {
 		this.store = store;
 	}
 
     @FXML
     private TextField fieldTitle;
-    
+
 	@FXML
     private TextField fieldCategory;
 
@@ -33,16 +29,16 @@ public class AddBookToStoreScreenController {
 
     @FXML
     private Spinner<Double> spinnerCost;
-    
+
     @FXML
-    void initialize() {	
+    void initialize() {
     	RoundedSpinnerMaker.makeRoundedSpinner(spinnerCost, 0, 100, 0, 0.05);
-    	
+
     	System.out.println("ADD BOOK INITIALIZED 5");
     }
 
     @FXML
-    void addBook(ActionEvent event) {		
+    void addBook(ActionEvent event) {
 		Track track1 = new Track("Miracle", 210);
 		Track track2 = new Track("About You", 230);
 		Track track3 = new Track("Moonshine", 180);
@@ -56,33 +52,33 @@ public class AddBookToStoreScreenController {
 		cd1.addTrack(track4);
 		cd1.addTrack(track5);
 		cd1.addTrack(track1_x);
-		
+
 		Book newBook = new Book(
-    		fieldTitle.getText(),	
-    		fieldCategory.getText(),		
+    		fieldTitle.getText(),
+    		fieldCategory.getText(),
     		spinnerCost.getValue().floatValue()
 		);
-		
+
 		for (String author : fieldAuthors.getText().split(",")) {
 			author = author.strip();
 			if (!author.isEmpty()) {
 				newBook.addAuthor(author);
 			}
 		}
-		
+
     	store.addMedia(newBook);
-	
-    	
+
+
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Added book");
 		alert.setHeaderText(null);
 		alert.setContentText("The book " + fieldTitle.getText() + " was added!");
 		alert.showAndWait();
-		
-		
-		fieldTitle.clear();	
-		fieldCategory.clear();		
-		fieldAuthors.clear(); 
+
+
+		fieldTitle.clear();
+		fieldCategory.clear();
+		fieldAuthors.clear();
 		spinnerCost.getValueFactory().setValue(0.0);
     }
 
