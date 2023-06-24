@@ -40,4 +40,16 @@ public class Track implements Playable {
 		this.title = title;
 		this.length = length;
 	}
+
+	@Override
+	public void playSwing() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void playJavaFX() {
+		// TODO Auto-generated method stub
+		
+	}
 }

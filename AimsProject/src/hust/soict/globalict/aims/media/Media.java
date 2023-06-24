@@ -2,6 +2,8 @@ package hust.soict.globalict.aims.media;
 
 import java.util.Comparator;
 
+import javax.swing.JOptionPane;
+
 import hust.soict.globalict.aims.exception.PlayerException;
 
 public abstract class Media implements Comparable<Media> {
@@ -98,13 +100,17 @@ public abstract class Media implements Comparable<Media> {
 		this.cost = cost;
 	}
 
-	public void playMedia() {
+	public void playMedia() throws PlayerException{
 		if (this instanceof Playable) {
-			try {
-				((Playable) this).play();
-			} catch (PlayerException e) {
-				System.err.println(e);
-			}
+			((Playable) this).play();
+		} else {
+			System.out.println("Playable media not found. Please try again.");
+		}
+	}
+	
+	public void playMediaSwing() {
+		if (this instanceof Playable) {
+			((Playable) this).playSwing();
 		} else {
 			System.out.println("Playable media not found. Please try again.");
 		}

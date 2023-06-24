@@ -1,5 +1,7 @@
 package hust.soict.globalict.aims.media;
 
+import javax.swing.JOptionPane;
+
 import hust.soict.globalict.aims.exception.PlayerException;
 
 public class DigitalVideoDisc extends Disc implements Playable, Comparable<Media>{
@@ -91,4 +93,23 @@ public class DigitalVideoDisc extends Disc implements Playable, Comparable<Media
         }
         return super.compareTo(o2);
     }
+
+	@Override
+	public void playSwing() {
+		// TODO Auto-generated method stub
+		try {
+			this.play();
+			JOptionPane.showMessageDialog(null, "Playing DVD: " + this.getTitle(), "Playable Media", JOptionPane.INFORMATION_MESSAGE);
+		} catch (PlayerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "DVD Length is non-positive!", "Illegal DVD Length", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	@Override
+	public void playJavaFX() {
+		// TODO Auto-generated method stub
+		
+	}
 }

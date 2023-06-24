@@ -3,6 +3,8 @@ package hust.soict.globalict.aims.media;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import hust.soict.globalict.aims.exception.PlayerException;
 
 public class CompactDisc extends Disc implements Playable {
@@ -94,5 +96,24 @@ public class CompactDisc extends Disc implements Playable {
 	public CompactDisc(String title) {
 		super(title);
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void playSwing() {
+		// TODO Auto-generated method stub
+		try {
+			this.play();
+			JOptionPane.showMessageDialog(null, "Playing CD: " + this.getTitle(), "Playable Media", JOptionPane.INFORMATION_MESSAGE);
+		} catch (PlayerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "CD Length is non-positive!", "Illegal CD Length", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	@Override
+	public void playJavaFX() {
+		// TODO Auto-generated method stub
+		
 	}
 }

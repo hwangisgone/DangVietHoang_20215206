@@ -3,6 +3,7 @@ package hust.soict.globalict.aims;
 import java.util.Scanner;
 
 import hust.soict.globalict.aims.cart.Cart;
+import hust.soict.globalict.aims.exception.PlayerException;
 import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
@@ -121,7 +122,13 @@ public class Aims {
 
 				break;
 			case 3:
-				media.playMedia();
+				try {
+					media.playMedia();
+				} catch (PlayerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+					
 				break;
 			case 4:
 				cartMenu();
@@ -160,7 +167,12 @@ public class Aims {
 				storeMenu();
 				break;
 			case 2:
-				media.playMedia();
+				try {
+					media.playMedia();
+				} catch (PlayerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				mediaDetailsMenu(media);
 				break;
 			default:
@@ -218,7 +230,12 @@ public class Aims {
 				cart.removeMedia(media);
 				break;
 			case 4:
-				media.playMedia();
+				try {
+					media.playMedia();
+				} catch (PlayerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				break;
 			case 5:
 				placeOrder();
