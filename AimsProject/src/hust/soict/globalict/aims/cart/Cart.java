@@ -1,5 +1,6 @@
 package hust.soict.globalict.aims.cart;
 
+import java.text.DecimalFormat;
 import java.util.Collections;
 
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
@@ -85,6 +86,11 @@ public class Cart {
 
 		return total;
 	}
+	
+	public String totalCostText() {
+		DecimalFormat decimalFormat = new DecimalFormat("#.##");
+		return decimalFormat.format(this.totalCost());
+	}
 
 	public void print() {
 		System.out.println("***********************CART***********************");
@@ -96,7 +102,7 @@ public class Cart {
         	System.out.printf("%d. %s\n", i+1, medium.toString());
         }
 
-		System.out.println("Total cost: " + this.totalCost() + "$");
+		System.out.println("Total cost: " + this.totalCostText() + "$");
 		System.out.println("***************************************************");
 	}
 

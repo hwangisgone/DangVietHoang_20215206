@@ -51,12 +51,18 @@ public class CompactDisc extends Disc implements Playable {
         }
 		return len;
 	}
+	
+	@Override
+	public String getPlayContent() {
+		// TODO Auto-generated method stub
+		return "Playing CD: " + this.getTitle() + "\nCD length: " + this.getLength();
+	}
 
 	@Override
 	public void play() throws PlayerException {
 		if(this.getLength() > 0) {
 			System.out.println("Disc Artist: " + this.getArtist());
-			System.out.println("Disc length: " + this.getLength());
+			System.out.println(this.getPlayContent());
 
 			int index = 0;
 	        for (Track track : tracks) {
@@ -98,22 +104,5 @@ public class CompactDisc extends Disc implements Playable {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void playSwing() {
-		// TODO Auto-generated method stub
-		try {
-			this.play();
-			JOptionPane.showMessageDialog(null, "Playing CD: " + this.getTitle(), "Playable Media", JOptionPane.INFORMATION_MESSAGE);
-		} catch (PlayerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "CD Length is non-positive!", "Illegal CD Length", JOptionPane.ERROR_MESSAGE);
-		}
-	}
 
-	@Override
-	public void playJavaFX() {
-		// TODO Auto-generated method stub
-		
-	}
 }

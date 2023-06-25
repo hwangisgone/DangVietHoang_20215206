@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 
 import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.exception.PlayerException;
+import hust.soict.globalict.aims.media.CompactDisc;
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.Playable;
 
@@ -58,7 +60,14 @@ public class MediaStore extends JPanel {
 			btnPlay.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					media.playMediaSwing();
+					try {
+						String playContent = media.playMedia();
+
+						JOptionPane.showMessageDialog(null, playContent, "Playing media", JOptionPane.INFORMATION_MESSAGE);
+					} catch (PlayerException e1) {
+						JOptionPane.showMessageDialog(null, e1.getMessage(), "Illegal Media Length", JOptionPane.ERROR_MESSAGE);
+						e1.printStackTrace();
+					}
 				}
 			});
 			container.add(btnPlay);

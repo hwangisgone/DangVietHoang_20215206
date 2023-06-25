@@ -19,10 +19,15 @@ public class Track implements Playable {
 	}
 
 	@Override
+	public String getPlayContent() {
+		// TODO Auto-generated method stub
+		return "Playing Track: " + this.getTitle() + "\nTrack length: " + this.getLength();
+	}
+	
+	@Override
 	public void play() throws PlayerException {
 		if (this.getLength() > 0) {
-			System.out.println("Playing Track: " + this.getTitle());
-			System.out.println("Track length: " + this.getLength());
+			System.out.println(this.getPlayContent());
 		} else {
 			throw new PlayerException("ERROR: Track " + this.getTitle() + " length is non-positive");
 		}
@@ -41,15 +46,5 @@ public class Track implements Playable {
 		this.length = length;
 	}
 
-	@Override
-	public void playSwing() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void playJavaFX() {
-		// TODO Auto-generated method stub
-		
-	}
 }

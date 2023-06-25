@@ -177,6 +177,8 @@ public class StoreScreen extends JFrame {
 		cd1.addTrack(track3);
 		cd1.addTrack(track4);
 		cd1.addTrack(track5);
+		
+		DigitalVideoDisc dvd4 = new DigitalVideoDisc("No Length DVD",			"Animation",		0,		0.99f);
 
 		Store theStore = new Store();
 		Cart theCart = new Cart();
@@ -184,6 +186,7 @@ public class StoreScreen extends JFrame {
 		theStore.addMedia(dvd1);
 		theStore.addMedia(dvd2);
 		theStore.addMedia(dvd3);
+		theStore.addMedia(dvd4);
 
 		theStore.addMedia(book1);
 		theStore.addMedia(book2);

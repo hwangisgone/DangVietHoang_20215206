@@ -1,6 +1,9 @@
 package hust.soict.globalict.aims.screen;
 
 import hust.soict.globalict.aims.cart.Cart;
+import hust.soict.globalict.aims.exception.PlayerException;
+import hust.soict.globalict.aims.media.CompactDisc;
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.media.Playable;
 import hust.soict.globalict.aims.screen.add.AddBookToStoreScreenController;
@@ -72,8 +75,8 @@ public class CartScreenController {
     void btnActionPlaceOrder(ActionEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Placing order");
-		alert.setHeaderText(cart.totalCost() + " $");
-		alert.setContentText("Your total is " + cart.totalCost() + " $. Please pay in cash.");
+		alert.setHeaderText(cart.totalCostText() + " $");
+		alert.setContentText("Your total is " + cart.totalCostText() + " $. Please pay in cash.");
 
 		alert.showAndWait();
 
@@ -120,7 +123,7 @@ public class CartScreenController {
     }
 
     public void changeTotalCost() {
-    	totalCost.setText(this.cart.totalCost() + " $");
+    	totalCost.setText(this.cart.totalCostText() + " $");
     }
 
     @FXML
@@ -134,17 +137,30 @@ public class CartScreenController {
     void btnPlayPressed(ActionEvent event) {
     	Media media = tblMedia.getSelectionModel().getSelectedItem();
 		if(media instanceof Playable) {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Playing Media");
-			alert.setHeaderText(null);
-			alert.setContentText("Playing " + media.getTitle());
+			try {
+				String playContent = media.playMedia();
+				
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Playing Media");
+				alert.setHeaderText(null);
+				alert.setContentText(playContent);
 
-			alert.showAndWait();
+				alert.showAndWait();
+			} catch (PlayerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Illegal Media Length");
+				alert.setHeaderText(e.getMessage());
+				alert.setContentText(null);
+
+				alert.showAndWait();
+			}
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error Dialog");
 			alert.setHeaderText("Ooops, there was an error!");
-			alert.setContentText("Ooops, there was an error!");
+			alert.setContentText("Ooops, media is not playablez!");
 
 			alert.showAndWait();
 		}

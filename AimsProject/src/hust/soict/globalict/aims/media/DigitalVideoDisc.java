@@ -37,12 +37,15 @@ public class DigitalVideoDisc extends Disc implements Playable, Comparable<Media
 		// No match found
 		return false;
 	}
+	
+	public String getPlayContent() {
+		return "Playing DVD: " + this.getTitle() + "\nDVD length: " + this.getLength(); 
+	}
 
 	@Override
 	public void play() throws PlayerException {
 		if (this.getLength() > 0) {
-			System.out.println("Playing DVD: " + this.getTitle());
-			System.out.println("DVD length: " + this.getLength());
+			System.out.println(this.getPlayContent());
 		} else {
 			throw new PlayerException("ERROR: DVD length is non-positive");
 		}
@@ -93,23 +96,4 @@ public class DigitalVideoDisc extends Disc implements Playable, Comparable<Media
         }
         return super.compareTo(o2);
     }
-
-	@Override
-	public void playSwing() {
-		// TODO Auto-generated method stub
-		try {
-			this.play();
-			JOptionPane.showMessageDialog(null, "Playing DVD: " + this.getTitle(), "Playable Media", JOptionPane.INFORMATION_MESSAGE);
-		} catch (PlayerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "DVD Length is non-positive!", "Illegal DVD Length", JOptionPane.ERROR_MESSAGE);
-		}
-	}
-
-	@Override
-	public void playJavaFX() {
-		// TODO Auto-generated method stub
-		
-	}
 }
